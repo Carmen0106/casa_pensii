@@ -6,4 +6,11 @@
 
             });
 
+     
+            $('input.dosar').typeahead({
+                name: 'dosar',
+                remote: 'searchdosar.php?d=%QUERY'
+
+            });
+
         });

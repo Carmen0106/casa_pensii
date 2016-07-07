@@ -40,7 +40,9 @@ $modif = "SELECT dosare.*, modificari.nume_modif, modificari.data, modificari.id
             <div id="modificari" class="row">
                 <div class="col-md-2"></div>
                 <label class="col-md-3">Registru modificari:</label>
+<<<<<<< HEAD
                 <p class="modificare col-md-4"><?php echo $row['nume_modif'];?> de <?php echo $row['username'];?> la <?php echo formatDate($row['data']);?></p>
+
             </div>    
             <?php endwhile; ?>
         <?php else:?>
