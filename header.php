@@ -1,5 +1,6 @@
 <?php include 'config/config.php'; ?>
 <?php include 'libraries/Database.php'; ?>
+<?php include 'helpers/format.php'; ?>
 <?php session_start(); ?>
 <?php
     if(!isset($_SESSION['user'])){
