@@ -48,10 +48,10 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
-                <form class="form-inline" style="padding-top: 10px">
+                <form class="form-inline" style="padding-top: 10px" method="POST" action="dosar_rezultat.php">
                     <div class="form-group">
                       <label for="dosar">Cauta dosar</label>
-                      <input type="search" class="form-control" id="dosar" placeholder="numar dosar">
+                      <input type="search" class="form-control input-sm dosar" id="dosar" name="dosar" placeholder="numar dosar">
                     </div>
                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                  </form>
