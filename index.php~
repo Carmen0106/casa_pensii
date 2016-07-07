@@ -5,7 +5,6 @@
     $query = "SELECT * FROM dosare WHERE id_user =".$_SESSION['id'];
     $dosare = $db->select($query);
     
-
 ?>
 
  <div class="container">
@@ -25,7 +24,7 @@
               <?php while($row = $dosare->fetch_assoc()):?>
                    
                     <div class="col-md-2"><font size="4"><?php echo $row['numar']; ?></font></div>
-                    <div class="col-md-6"><strong><a href="modifica_dosar.php?dosar=<?php echo $row['numar']; ?>"> <?php echo $row['nume']; ?></a></strong></div> 
+                    <div class="col-md-6"><strong><a href="modifica_dosar.php"> <?php echo $row['nume']; ?></a></strong></div> 
                 
                 <div id="actiuni" class="col-md-4">
                     <button type="button" class="btn btn-danger btn-sm">Inchide <span class="glyphicon glyphicon-remove-sign"></span></button>
