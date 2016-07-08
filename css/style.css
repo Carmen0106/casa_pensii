@@ -49,20 +49,35 @@ body {
 *Modifica dosar 
 */
 
-#nr_dosar > p{
-    display: inline-block;
-}
 
-#nr_dosar{
-    text-align: center;
-    margin-bottom: 20px;
-}
 
 #ad_modif>input[type='text']{
     margin-left: 12px;
     margin-right: 2px;
 }
+#nr_dosar{
+    text-align: center;
+}
+#text_modif{
+    width:500px;
+    height:50px;
+    margin-left: 10px
+}
 
+#inapoi{
+    margin-right: 15px;
+}
+
+#inapoi-salveaza{
+   
+    text-align: center;
+}
+
+#err>p{
+    color: red;
+    font-style: italic;
+    text-align: center;
+}
 
 /*
 *Includes
@@ -126,3 +141,5 @@ body {
     color: #111;
     background-color: #fff;
 }
+
+
