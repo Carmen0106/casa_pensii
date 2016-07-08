@@ -10,7 +10,7 @@
 
  <div class="container">
      
-    <form>
+    
         <div class="col-md-12">
         <div class="panel panel-primary">
         <div class="panel-heading"><label for="rand"><h3 class="panel-title" >Dosare in lucru</h3></label></div>
@@ -28,9 +28,12 @@
                     <div class="col-md-6"><strong><a href="modifica_dosar.php?dosar=<?php echo $row['numar']; ?>"> <?php echo $row['nume']; ?></a></strong></div> 
                 
                 <div id="actiuni" class="col-md-4">
-                    <button type="button" class="btn btn-danger btn-sm">Inchide <span class="glyphicon glyphicon-remove-sign"></span></button>
-                    <input type="search"  class="form-control input-sm nume" name="nume" placeholder="Schimba utilizator"/>
-                    <button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-send"></span></button>
+                    <form>
+                        <button type="submit" name="d" value="<?php echo $row['numar']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Esti sigur ca vrei sa inchizi dosarul?')" formaction="inchide_dosar.php" >Inchide <span class="glyphicon glyphicon-remove-sign"></span></button>
+                        <input type="search" class="form-control input-sm nume" name="nume" placeholder="Schimba utilizator"/>
+                        <input type="hidden" name="d" value="<?php echo $row['numar']; ?>" />
+                        <button type="submit" class="btn btn-default btn-sm" formaction="schimba_utilizator.php"><span class="glyphicon glyphicon-send"></span></button>
+                    </form>
                 </div><br><br>
                     <?php endwhile; ?>
                  <?php else :?>
@@ -42,7 +45,7 @@
         </div>
         </div>
         </div>
-    </form>
+    
      
         <form>
         <div class="col-md-12">
