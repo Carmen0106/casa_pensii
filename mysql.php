@@ -23,6 +23,7 @@ if (isset($_REQUEST['query'])) {
         while($row = mysqli_fetch_assoc($result)) {
          $array[] = array (
             'value' => $row['username'],
+             'id' => $row['id'],
         );
     }
         
