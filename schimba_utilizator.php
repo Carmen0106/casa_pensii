@@ -2,19 +2,19 @@
 include 'config/config.php';
 include 'libraries/Database.php';
 session_start();
-
 $db = new Database();
-$nume = $_GET['nume'];
 $dosar = $_GET['d'];
-$query = "SELECT id FROM useri WHERE username = {$nume}"; 
-$iduser = mysqli_query($db->link, $query);
 
-while ($row = $iduser->fetch_assoc()) {
-$id=$row['id'];
-echo $id;
-$query2 = "UPDATE dosare SET id_user = $id WHERE numar = $dosar"; 
-echo $query2;
-
-mysqli_query($db->link, $query2);
+if(isset($_GET['schimba'])){
+    $nume = $_GET['nume'];
+    $cauta_user = "SELECT * FROM useri WHERE username= '$nume'";
+    $rezultat = mysqli_query($db->link, $cauta_user);
+    $rand= mysqli_fetch_assoc($rezultat);
+    
+    $id_u = $rand['id'];
+    $query= "UPDATE dosare SET id_user= $id_u  WHERE numar= $dosar";
+    $rez = mysqli_query($db->link,$query);
+    
+    header("Location:index.php");
+    exit();
 }
-//header ('location: index.php');

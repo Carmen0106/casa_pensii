@@ -29,10 +29,10 @@
                 
                 <div id="actiuni" class="col-md-4">
                     <form>
-                        <button type="submit" name="d" value="<?php echo $row['numar']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Esti sigur ca vrei sa inchizi dosarul?')" formaction="inchide_dosar.php" >Inchide <span class="glyphicon glyphicon-remove-sign"></span></button>
+                        <button type="submit"  value="<?php echo $row['numar']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Esti sigur ca vrei sa inchizi dosarul?')" formaction="inchide_dosar.php" >Inchide <span class="glyphicon glyphicon-remove-sign"></span></button>
                         <input type="search" class="form-control input-sm nume" name="nume" placeholder="Schimba utilizator"/>
                         <input type="hidden" name="d" value="<?php echo $row['numar']; ?>" />
-                        <button type="submit" class="btn btn-default btn-sm" formaction="schimba_utilizator.php"><span class="glyphicon glyphicon-send"></span></button>
+                        <button type="submit" name="schimba" class="btn btn-default btn-sm" formaction="schimba_utilizator.php"><span class="glyphicon glyphicon-send"></span></button>
                     </form>
                 </div><br><br>
                     <?php endwhile; ?>
