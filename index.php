@@ -4,8 +4,6 @@
     //query pentru a scoate numele dosarelor din baza de date
     $query = "SELECT * FROM dosare WHERE id_user =".$_SESSION['id'];
     $dosare = $db->select($query);
-    
-
 ?>
 
  <div class="container">
