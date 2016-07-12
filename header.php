@@ -1,3 +1,4 @@
+<?php $page = basename($_SERVER['SCRIPT_NAME']); ?>
 <?php include 'config/config.php'; ?>
 <?php include 'libraries/Database.php'; ?>
 <?php include 'helpers/format.php'; ?>
@@ -55,18 +56,18 @@ $nr_mesaje = mysqli_num_rows($result);
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Acasa</a></li>
+            <li <?php echo ($page=='index.php'?'class=active':'');?>><a href="index.php">Acasa</a></li>
 
             <?php if($nr_mesaje != 0):?>
-            <li><a href="inbox.php">Inbox <span class="badge"><?php echo $nr_mesaje;?></span></a></li>
+            <li <?php echo ($page=='inbox.php'?'class=active':'')?>><a href="inbox.php">Inbox <span class="badge"><?php echo $nr_mesaje;?></span></a></li>
                 <?php else:?>
-             <li><a href="inbox.php">Inbox</a></li>
+             <li <?php echo ($page=='inbox.php'?'class=active':'')?>><a href="inbox.php">Inbox</a></li>
              <?php endif;?>
                 
 
             <?php if ($_SESSION['tip'] == 2):?>
-            <li><a href="utilizatori.php">Utilizatori</a></li>
-            <li><a href="dosare.php">Dosare</a></li>
+            <li <?php echo ($page=='utilizatori.php'?'class=active':'')?>><a href="utilizatori.php">Utilizatori</a></li>
+            <li <?php echo ($page=='dosare.php'?'class=active':'')?>><a href="dosare.php">Dosare</a></li>
             <?php endif;?>
 
             <li><a href="logout.php">LOGOUT</a></li>
