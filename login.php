@@ -17,6 +17,7 @@ if(isset($_POST['signin'])){
     
     if($dosare->num_rows > 0){
         $_SESSION['id']= $row['id'];
+        $_SESSION['tip']= $row['tip'];
         $_SESSION['user']= $username;
         header('Location: index.php');
         exit();    

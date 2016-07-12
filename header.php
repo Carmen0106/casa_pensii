@@ -22,6 +22,7 @@
     <script type="text/javascript" src="js/jquery-2.2.4.min.js"></script>
     <script type="text/javascript" src="js/typeahead.js"></script>
     <script type="text/javascript" src="js/searchuser.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
     <title>Aplicatie pensii</title>
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -45,6 +46,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Acasa</a></li>
+            <?php if ($_SESSION['tip'] == 2):?>
+            <li><a href="utilizatori.php">Utilizatori</a></li>
+            <li><a href="dosare.php">Dosare</a></li>
+            <?php endif;?>
             <li><a href="logout.php">LOGOUT</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
