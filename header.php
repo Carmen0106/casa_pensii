@@ -7,7 +7,17 @@
         header("Location: login.php");
         exit();
     }
-
+?>
+<?php
+$db = new Database();
+$query = "SELECT inbox.*,dosare.nume as nume_dosar, useri.nume, useri.prenume 
+                    FROM inbox 
+            INNER JOIN dosare ON dosare.numar = inbox.id_dosar
+            INNER JOIN useri ON useri.id = inbox.id_sender
+                    WHERE
+            id_receiver =".$_SESSION['id'];
+$result= mysqli_query($db->link,$query);
+$nr_mesaje = mysqli_num_rows($result);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,19 +50,24 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Bine ai venit, <?php echo $_SESSION['user'];?></a>
+          <a class="navbar-brand" href="index.php">Bine ai venit, <?php echo $_SESSION['user'];?>!</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Acasa</a></li>
+            <?php if($nr_mesaje != 0):?>
+            <li><a href="inbox.php">Inbox <span class="badge"><?php echo $nr_mesaje;?></span></a></li>
+                <?php else:?>
+             <li><a href="inbox.php">Inbox</a></li>
+             <?php endif;?>
+                
             <li><a href="logout.php">LOGOUT</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li>
                 <form class="form-inline" style="padding-top: 10px" method="POST" action="dosar_rezultat.php">
                     <div class="form-group">
-                      <label for="dosar">Cauta dosar</label>
-                      <input type="search" class="form-control input-sm dosar" id="dosar" name="dosar" placeholder="numar dosar">
+                      <label for="dosar">Cauta dosar</label> <input type="search" class="form-control input-sm dosar" id="dosar" name="dosar" placeholder="numar dosar">
                     </div>
                     <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                  </form>

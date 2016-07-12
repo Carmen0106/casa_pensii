@@ -4,6 +4,8 @@
 
 $query = "SELECT * FROM dosare WHERE numar LIKE '%{$_POST['dosar']}%'"; 
 $dosar = $db->select($query);
+
+
 ?>  
  <div class="container">
      
@@ -15,8 +17,10 @@ $dosar = $db->select($query);
                     
                         <div class="col-md-3"><strong>Nr. dosar</strong></div>
                         <div class="col-md-3"><strong>Nume dosar</strong></div>
-                        <div class="col-md-5"><strong>Actiuni</strong></div>
+                        <div class="col-md-3"><strong>Status</strong></div>
+                        <div class="col-md-3"><strong>Actiuni</strong></div>
                 </div>
+                <hr>
 
 
              <?php if($dosar): ?>
@@ -25,20 +29,42 @@ $dosar = $db->select($query);
                     <form class="form-inline" method="POST" action="iadosar.php?dosar=<?php echo $row['numar']?>"> 
                         <div class="row">
                             
-                                <div class="col-md-3"><font size="4"><?php echo $row['numar']?></font></div>
+                                <div class="col-md-3"><?php echo $row['numar']?></div>
                                 <div class="col-md-3"><strong><?php echo $row['nume']?></strong></div>
-                                <div id="actiuni" class="col-md-5">
-                                    <?php if ($row['id_user']==0):?>
-                                    <button type="submit" class="btn btn-primary" style="float: left;width: 100px;">Ia in lucru <span class="glyphicon glyphicon-check"></span></button>
-                                        <?php else:
-                                            $queryuser = "SELECT username FROM useri WHERE id = '{$row['id_user']}'"; 
-                                            $userul = $db->select($queryuser);
-                                            $rowuser = $userul->fetch_assoc();
-                                        echo 'Dosar in lucru la utilizatorul <b>'.$rowuser['username'].'</b>.';
-
-                                        endif;?>
-                                  
-                                    <a class="btn btn-default" style="float: right;" href="index.php">Inapoi<span class="glyphicon glyphicon-backward"></span></a>
+                                <div id="actiuni">
+                                    
+                                    <?php if ($row['id_user']== 0):?>
+                                    
+                                     <?php  $query = "SELECT * FROM inbox WHERE id_dosar =".$row['numar']; 
+                                            $dosar_inbox = $db->select($query);
+                                           
+                                    ?>  
+                                    <?php if($dosar_inbox):?>
+                                    <?php  $rezultat= $dosar_inbox->fetch_assoc();?>
+                                    <?php        
+                                            $query_receive = "SELECT username FROM useri WHERE id =".$rezultat['id_receiver']; 
+                                            $receiver = $db->select($query_receive);
+                                            $data_receive = $receiver->fetch_assoc();
+                                            
+                                      ?>
+                                    
+                                        <p class ="col-md-3">Dosar expediat catre <strong><?php echo $data_receive['username'];?>.</strong></p>
+                                    <?php else:?>
+                                        <p class="col-md-3">Dosar liber.</p>
+                                        <button type="submit" class="btn btn-primary ia_lucru">Ia in lucru <span class="glyphicon glyphicon-check"></span></button>
+                                    <?php endif;?>
+                                    
+                                        <?php else:?>
+                                            <?php 
+                                                $queryuser = "SELECT username FROM useri WHERE id = '{$row['id_user']}'"; 
+                                                $userul = $db->select($queryuser);
+                                                $rowuser = $userul->fetch_assoc();
+                                             ?>
+                                    <p class ="col-md-3">Dosar in lucru la utilizatorul <strong><?php echo $rowuser['username'];?></strong></p>
+                                    
+                                        <?php endif;?>
+                                  <a class="btn btn-default inapoi" href="index.php">Inapoi<span class="glyphicon glyphicon-backward"></span></a>
+                                   
                                         
                                 </div><br><br>
                         </div>

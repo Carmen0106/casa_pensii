@@ -36,14 +36,8 @@ class Database{
     }
     
      public function insert($query){
-        $insert_row = $this->link->query($query) or die($this->link->connect_error.__LINE__);
+        $insert_row = $this->link->query($query);
         
-        //valideaza insertul
-        if($insert_row){
-            header("Location: index.php?msg=".urlencode('Record added'));
-            exit();
-        }else{
-           die('Error: ('. $this->link->errno.')'.$this->link->error);
-        }
+       
     }
 }

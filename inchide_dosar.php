@@ -4,8 +4,8 @@ include 'libraries/Database.php';
 session_start();
 
 $db = new Database();
-$dosar = $_GET['d'];
+$dosar = $_POST['dosar'];
 $query = "UPDATE dosare SET id_user = 0 WHERE  numar = $dosar"; 
-mysqli_query($db->link, $query);
+$inchide_dosar = mysqli_query($db->link, $query);
 
 header ('location: index.php');

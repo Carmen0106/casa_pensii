@@ -7,6 +7,7 @@ body {
   padding-top: 100px;
   padding-bottom: 40px;
   background-color: #eee;
+  
 
 }
 
@@ -104,7 +105,9 @@ body {
 
 #rand{
     margin-bottom: 20px;
+ 
 }
+
 
 #actiuni>button[type='button']{
     width:30%; 
@@ -142,4 +145,46 @@ body {
     background-color: #fff;
 }
 
+/*
+*Dosar rezultat
+*/
 
+#actiuni>button.ia_lucru{
+    float: left;
+    width: 100px;
+}
+
+
+.panel-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.panel-body{
+    font-size:17px;
+}
+
+
+
+
+/*
+*Header
+*/
+
+#navbar ul>li{
+    font-size: 18px;
+}
+
+
+#actiuni p{
+    display: inline-block;
+}
+
+#actiuni a{
+    width: 100px;
+    
+}
+
+.ia_lucru{
+    margin-right: 10px;
+}
