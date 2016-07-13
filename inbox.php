@@ -58,6 +58,7 @@ if(isset($_POST['ia_lucru'])){
                     <button name="ia_lucru" type="submit" class="btn btn-primary ia_lucru">Ia in lucru <span class="glyphicon glyphicon-check"></span></button> 
                     <input type="hidden" name="dosar" value="<?php echo $row['id']; ?>" />
                 </div>
+                  <br><br>
                <?php endwhile;?>
                <?php else :?>
                    <p class="col-md-12">Nu ai dosare primite.</p>

@@ -28,14 +28,14 @@
             <div class="col-md-2"><input type="text" name="nume" required/></div> 
             <div class="col-md-2"><input type="text" name="prenume" required/></div>
             <div class="col-md-2"><input type="text" name="parola" required/></div>
-            <div class="col-md-2 text-center"><input type="checkbox" name="tip" /></div>
-            <div class="col-md-1"><button type="submit" class="btn btn-warning">Adauga</button></div>
+            <div class="col-md-1 text-center"><input type="checkbox" name="tip" /></div>
+            <div class="col-md-2"><button type="submit" class="btn btn-warning">Adauga</button></div>
             </form>
         <br><br>
         </div>
         </div>
         </div>
-        </div>
+       </div>
      
      
      
