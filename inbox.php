@@ -10,24 +10,6 @@ $query = "SELECT inbox.*,dosare.nume as nume_dosar, useri.nume, useri.prenume
                     WHERE
             id_receiver =".$_SESSION['id'];
 $result= $db->select($query);
-
-
-//query pt  a lua in lucru dosarul primit(nu merge)
-if(isset($_POST['ia_lucru'])){
-    $id = $_SESSION['id'];
-    $dosar=$_GET['dosar'];
-   
-    
-    $query = "UPDATE dosare SET id_user ={$id} WHERE numar={$dosar}";
-    $in_lucru = mysqli_query($db->link,$query);
-    $query="DELETE FROM inbox WHERE id_dosar={$dosar}";
-    $sterge= mysqli_query($db->link,$query);
-    
-    header("Location: index.php");
-    exit();
-}
-
-
 ?>
 
 
@@ -48,7 +30,7 @@ if(isset($_POST['ia_lucru'])){
                 <?php if($result):?>
                 <?php while($row = $result->fetch_assoc()):?>
             
-<form method="POST" action="inbox.php?dosar=<?php echo $row['id_dosar'];?>">
+<form method="POST" action="iadosar.php?dosar=<?php echo $row['id_dosar'];?>">
                     
     <div class="col-md-2"><strong><?php echo $row['id_dosar'];?></strong></div>
                 <div class="col-md-2"><?php echo $row['nume_dosar'];?></div>
@@ -59,6 +41,7 @@ if(isset($_POST['ia_lucru'])){
                     <input type="hidden" name="dosar" value="<?php echo $row['id']; ?>" />
                 </div>
                   <br><br>
+</form>
                <?php endwhile;?>
                <?php else :?>
                    <p class="col-md-12">Nu ai dosare primite.</p>

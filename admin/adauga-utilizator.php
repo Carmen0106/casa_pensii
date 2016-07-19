@@ -14,7 +14,7 @@ $tip = '1';
 }
 else {$tip = '2';}
 
-$query = "INSERT INTO useri (username, nume, prenume, parola, tip) VALUES ('$username', '$nume', '$prenume', '$parola', '$tip')"; 
+$query = "INSERT INTO useri (username, nume, prenume, parola, tip, activ) VALUES ('$username', '$nume', '$prenume', '$parola', '$tip', '0')"; 
 mysqli_query($db->link, $query);
 
 header ('location: ../utilizatori.php');
