@@ -30,9 +30,12 @@ if(isset($_POST['schimba'])){
     //se creeaza o inregistrare noua in tabela istoric cu datele noului user
     $querynou= "INSERT INTO istoric (nr_dosar, id_sender, id_user, inbox) VALUES ($dosar, $id_sender, $id_receiver, NOW())";
     $reznou = mysqli_query($db->link,$querynou);
-    }
- else 
-   
     
     header("Location:index.php");
     exit();
+    
+    }
+ else {       
+    header("Location:index.php");
+    exit();
+ }
