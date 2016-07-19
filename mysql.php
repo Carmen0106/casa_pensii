@@ -7,7 +7,7 @@ $db = new Database();
 //CREATE QUERY TO DB AND PUT RECEIVED DATA INTO ASSOCIATIVE ARRAY
 if (isset($_REQUEST['query'])) {
     $query = $_REQUEST['query'];
-    $sql = "SELECT * FROM useri WHERE username LIKE '%{$query}%'";
+    $sql = "SELECT * FROM useri WHERE username LIKE '%{$query}%' AND activ = '1'";
     $result = mysqli_query($db->link, $sql);
 	$array = array();        
         while($row = mysqli_fetch_assoc($result)) {

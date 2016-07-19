@@ -19,8 +19,13 @@ if(isset($_POST['signin'])){
         $_SESSION['id']= $row['id'];
         $_SESSION['tip']= $row['tip'];
         $_SESSION['user']= $username;
+            if ($row['activ'] == 0) {
+                $msg = "Acest user este inactiv.";
+            }
+            else {
         header('Location: index.php');
-        exit();    
+        exit();   
+                 }
     }else{
         $msg = "Username-ul sau parola sunt gresite.";
     }
