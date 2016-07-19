@@ -61,7 +61,7 @@
                     <div class="col-md-3"><font size="4"><?php echo $row['prenume']; ?></font></div>
                     <div class="col-md-3"><font size="4">
                         <form method="POST">
-                            <button class="btn btn-danger" type="submit" formaction="admin/sterge_utilizator.php?user=<?php echo $row['id'];?>"><span class="glyphicon glyphicon-remove"> </span> Sterge</button>
+                            <button class="btn btn-danger" type="submit" onclick="return confirm('Esti sigur ca vrei sa stergi utilizatorul?')" formaction="admin/sterge_utilizator.php?user=<?php echo $row['id'];?>"><span class="glyphicon glyphicon-remove"> </span> Sterge</button>
                             <button class="btn btn-info" type="submit"><span class="glyphicon glyphicon-adjust"> </span> Modifica</button>
                         </form>
                     </div>
