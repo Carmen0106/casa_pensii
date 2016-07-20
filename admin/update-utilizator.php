@@ -5,16 +5,15 @@ session_start();
 
 if ($_SESSION['tip'] == 2) {
 $db = new Database();
-$numar = $_POST['numar'];
+$username = $_POST['username'];
 $nume = $_POST['nume'];
 $prenume = $_POST['prenume'];
-$cnp = $_POST['cnp'];
+$parola = $_POST['parola'];
 
-$query = "INSERT INTO dosare (numar, nume, prenume, cnp, id_user) VALUES ('$numar', '$nume','$prenume', '$cnp', '0')"; 
+$query = "UPDATE useri SET username='$username', nume='$nume', prenume='$prenume', parola='$parola'  WHERE id={$_POST['iduser']}"; 
 mysqli_query($db->link, $query);
 
-
-header ('location: ../dosare.php');
+header ('location: ../utilizatori.php');
 }
 else { 
     header ('location: ../index.php');

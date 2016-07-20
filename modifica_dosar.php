@@ -49,7 +49,7 @@ $modif = "SELECT dosare.*, modificari.nume_modif, modificari.data, modificari.id
                 <div class="panel-body">
                     <div id="nume_dosar" class="row">
                         <label class="col-md-6">Nume:</label>
-                        <p class="col-md-6"><?php echo $row['nume'];?></p>
+                        <p class="col-md-6"><?php echo $row['nume']." ".$row['prenume'];?></p>
                     </div>
                     <hr>
                 <div id="modificari" class="row">
@@ -71,7 +71,7 @@ $modif = "SELECT dosare.*, modificari.nume_modif, modificari.data, modificari.id
                 <div class="panel-body">
                 <div id="nume_dosar" class="row">
                     <label class="col-md-6">Nume:</label>
-                    <p class="col-md-6"><?php echo $row['nume'];?></p>
+                    <p class="col-md-6"><?php echo $row['nume']." ".$row['prenume'];?></p>
                 </div>
                 <hr>
                 <div id="modificari" class="row">

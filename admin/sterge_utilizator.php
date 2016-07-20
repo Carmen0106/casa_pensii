@@ -5,7 +5,7 @@ session_start();
 
 if ($_SESSION['tip'] == 2) {
 $db = new Database();
-$userid = $_GET['user'];
+$userid = $_POST['iduser'];
 $queryuser = "SELECT activ FROM useri WHERE id = '{$userid}'"; 
 $userul = $db->select($queryuser);
 $row = $userul->fetch_assoc();

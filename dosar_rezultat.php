@@ -55,10 +55,10 @@ $dosar = $db->select($query);
                         <div class="row bg-grey bg-warning">
                             
                                 <div class="col-md-3"><?php echo $row['numar']?></div>
-                                <div class="col-md-3"><strong><?php echo $row['nume']?></strong></div>
+                                <div class="col-md-3"><strong><?php echo $row['nume']." ".$row['prenume'];?></strong></div>
                                 <div id="actiuni">
                         
-                                    <div class ="col-md-3">Dosar expediat catre <strong><?php echo $data_receive['username'];?></strong>
+                                    <div class ="col-md-3">Expediat catre <strong><?php echo $data_receive['username'];?></strong>
                                         <br><span class="label label-default">de <?php echo $datele['timp']." zile"; ?></span></div>
                                         
                                 </div></div>
@@ -67,10 +67,10 @@ $dosar = $db->select($query);
                         <div class="row bg-grey bg-success">
                             
                                 <div class="col-md-3"><?php echo $row['numar']?></div>
-                                <div class="col-md-3"><strong><?php echo $row['nume']?></strong></div>
+                                <div class="col-md-3"><strong><?php echo $row['nume']." ".$row['prenume'];?></strong></div>
                                 <div id="actiuni">
                         
-                                <div class="col-md-3">Dosar liber.</div>
+                                <div class="col-md-3">Liber.</div>
                                 <button type="submit" class="btn btn-primary ia_lucru">Ia in lucru <span class="glyphicon glyphicon-check"></span></button>
                                                     
                                 </div></div>
@@ -91,10 +91,10 @@ $dosar = $db->select($query);
                         <div class="row bg-grey bg-danger">
                             
                                 <div class="col-md-3"><?php echo $row['numar']?></div>
-                                <div class="col-md-3"><strong><?php echo $row['nume']?></strong></div>
+                                <div class="col-md-3"><strong><?php echo $row['nume']." ".$row['prenume'];?></strong></div>
                                 <div id="actiuni">
                         
-                                <div class ="col-md-3">Dosar in lucru la utilizatorul <strong><?php echo $rowuser['username'];?></strong>
+                                <div class ="col-md-3">In lucru la utilizatorul <strong><?php echo $rowuser['username'];?></strong>
                                 <br><span class="label label-default">de <?php echo $datele2['timp']." zile"; ?></span></div>
                                     
                                 </div></div>

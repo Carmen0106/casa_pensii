@@ -3,7 +3,7 @@
 $db = new Database();
 
 //query care aduce toate dosarele primite din inbox
-$query = "SELECT inbox.*,dosare.nume as nume_dosar, useri.nume, useri.prenume 
+$query = "SELECT inbox.*,dosare.nume as nume_dosar, dosare.prenume as prenume_dosar, useri.nume, useri.prenume 
                     FROM inbox 
             INNER JOIN dosare ON dosare.numar = inbox.id_dosar
             INNER JOIN useri ON useri.id = inbox.id_sender
@@ -18,7 +18,7 @@ $result= $db->select($query);
         <div class="panel panel-primary">
         <div class="panel-heading"><label><h3 class="panel-title">Dosare primite</h3></label></div>
         <div class="panel-body">
-        <div class="row" id="rand">
+        <div class="row h4" id="rand">
                 <div class="col-md-2"><strong>Nr. dosar</strong></div>
                 <div class="col-md-2"><strong>Nume dosar</strong></div>
                  <div class="col-md-2"><strong>De la:</strong></div>
@@ -33,7 +33,7 @@ $result= $db->select($query);
 <form method="POST" action="iadosar.php?dosar=<?php echo $row['id_dosar'];?>">
                     
     <div class="col-md-2"><strong><?php echo $row['id_dosar'];?></strong></div>
-                <div class="col-md-2"><?php echo $row['nume_dosar'];?></div>
+                <div class="col-md-2"><?php echo $row['nume_dosar']." ".$row['prenume_dosar'];?></div>
                   <div class="col-md-2"><strong><?php echo $row['nume']." ".$row['prenume'];?></strong></div>
                   <div class="col-md-3"><?php echo formatDate($row['date_sent']);?></div>
                 <div id="actiuni" class="col-md-3">

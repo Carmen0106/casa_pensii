@@ -13,7 +13,7 @@
         <div class="panel panel-primary">
         <div class="panel-heading"><label for="rand"><h3 class="panel-title" >Dosare in lucru</h3></label></div>
         <div class ="panel-body">
-        <div class="row" id="rand">
+        <div class="row h4" id="rand">
                 <div class="col-md-2"><strong>Nr. dosar</strong></div>
                 <div class="col-md-6"><strong>Nume dosar</strong></div>
                 <div class="col-md-4"><strong>Actiuni</strong></div>
@@ -24,7 +24,7 @@
               <?php while($row = $dosare->fetch_assoc()):?>
                    
             <div class="col-md-2"><strong><?php echo $row['numar']; ?></strong></div>
-                    <div class="col-md-6"><strong><a href="modifica_dosar.php?dosar=<?php echo $row['numar']; ?>"> <?php echo $row['nume']; ?></a></strong></div> 
+                    <div class="col-md-6"><strong><a href="modifica_dosar.php?dosar=<?php echo $row['numar']; ?>"> <?php echo $row['nume']." ". $row['prenume']; ?></a></strong></div> 
                 
                 <div id="actiuni" class="col-md-4">
                     <form method="POST" action="schimba_utilizator.php">
