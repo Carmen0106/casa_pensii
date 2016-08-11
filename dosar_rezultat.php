@@ -1,8 +1,9 @@
 <?php include 'header.php'; ?>
+<?php include 'date_helpers.php';?>
 <?php 
     $db = new Database();
 
-$cautadosar = isset($_POST['dosar'])?$_POST['dosar']:"";
+$cautadosar = isset($_POST['dosar'])? $_POST['dosar']:"";
 $query = "SELECT * FROM dosare WHERE numar LIKE '%{$cautadosar}%' ORDER BY id_user"; 
 $dosar = $db->select($query);
 
@@ -44,11 +45,6 @@ $dosar = $db->select($query);
                                                             $query_receive = "SELECT username FROM useri WHERE id =".$rezultat['id_receiver']; 
                                                             $receiver = $db->select($query_receive);
                                                             $data_receive = $receiver->fetch_assoc();
-                                                            
-                                                            //ia datele din istoric si calculeaza diferenta de timp in zile
-                                                            $query_istoric = "SELECT datediff(NOW(),inbox) as timp FROM istoric WHERE id_user =".$rezultat['id_receiver']." AND nr_dosar = {$row['numar']} AND inchide IS NULL"; 
-                                                            $date_istoric = $db->select($query_istoric);
-                                                            $datele = $date_istoric->fetch_assoc();
                                                     ?>
 
                         
@@ -59,7 +55,7 @@ $dosar = $db->select($query);
                                 <div id="actiuni">
                         
                                     <div class ="col-md-3">Expediat catre <strong><?php echo $data_receive['username'];?></strong>
-                                        <br><span class="label label-default">de <?php echo $datele['timp']." zile"; ?></span></div>
+                                        <br><span > de <?php  echo timpInLucru(strtotime($rezultat['date_sent'])); ?></span></div>
                                         
                                 </div></div>
                                                     <?php else:?>
@@ -75,17 +71,19 @@ $dosar = $db->select($query);
                                                     
                                 </div></div>
                                                             
-                                                            <?php endif;?>
+                                        <?php endif;?>
                                     
                                         <?php else:?>
                                             <?php 
                                                 $queryuser = "SELECT username FROM useri WHERE id = '{$row['id_user']}'"; 
                                                 $userul = $db->select($queryuser);
                                                 $rowuser = $userul->fetch_assoc();
-                                                //ia datele din istoric si calculeaza diferenta de timp in zile
-                                                $query_istoric2 = "SELECT datediff(NOW(),lucru) as timp FROM istoric WHERE id_user =".$row['id_user']." AND nr_dosar = {$row['numar']} AND inchide IS NULL"; 
-                                                $date_istoric2 = $db->select($query_istoric2);
-                                                $datele2 = $date_istoric2->fetch_assoc();
+                                               //ia datele din istoric si calculeaza diferenta de timp in zile
+                                                $istoric = "SELECT lucru FROM istoric WHERE id_user= ".$row['id_user']." AND nr_dosar=".$row['numar']." AND lucru IS NOT NULL and inchide IS NULL"; 
+                                                $date_istoric = $db->select($istoric);
+ //                                               $in_lucru = $istoric->fetch_assoc();
+ //                                               print_r($in_lucru);
+                                              
                                              ?>
                         
                         <div class="row bg-grey bg-danger">
@@ -95,15 +93,19 @@ $dosar = $db->select($query);
                                 <div id="actiuni">
                         
                                 <div class ="col-md-3">In lucru la utilizatorul <strong><?php echo $rowuser['username'];?></strong>
-                                <br><span class="label label-default">de <?php echo $datele2['timp']." zile"; ?></span></div>
-                                    
+                               
+                               <?php if($date_istoric):?>
+                               <?php while($in_lucru = $date_istoric->fetch_assoc()):?>   
+                                <br><span><?php echo timpInLucru(strtotime($in_lucru['lucru'])) ?></span></div>
+                             
+                                    <?php endwhile;?>
+                                     <?php else:?>
+                              <?php return false;?>
+                              <?php endif;?>
                                 </div></div>
                                         
                                         <?php endif;?>
-                                  
-                                   
-                                        
-                        
+                
                     </form>
                                
             <?php endwhile;?>
@@ -117,4 +119,4 @@ $dosar = $db->select($query);
          
 
 
-<?php include 'footer.php';    
+<?php include 'footer.php'; ?>    

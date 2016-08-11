@@ -54,17 +54,12 @@ if(isset($_POST['signin'])){
         <div class="alert alert-danger"><?php echo $msg;?></div>
         <?php endif;?>
         <form class="form-signin" method="POST" action="login.php">
-        <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
+        <h2 class="form-signin-heading">Autentificare</h2>
+        <label for="inputEmail" class="sr-only">Numele utilizatorului</label>
         <input  name="username" type="text" class="form-control" placeholder="enter username" required>
-        <label class="sr-only">Password</label>
+        <label class="sr-only">Parola</label>
         <input name="password" type="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button name="signin" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button name="signin" class="btn btn-lg btn-primary btn-block" type="submit">Autentificare</button>
       </form>
 
     </div> <!-- /container -->
